@@ -16,6 +16,9 @@ void status_code_print_message(StatusCode code) {
         case CUY_ERROR_ARG_PARSER_VALIDATION_FILE_LINES:
             printf("Error: Flag --lines or -l must be used with --file or -f.\n");
             break;
+        case CUY_ERROR_FILE_HANDLER_FILE_DOES_NOT_EXIST:
+            printf("Error: File argument of --file does not exists.\n");
+            break;
         case CUY_ERROR_UNKNOWN:
             printf("Error: An unknown error occurred.\n");
             break;

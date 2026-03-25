@@ -25,7 +25,7 @@ Directory operations:
     ```
 * PENDING - Recirsively search for directories matching a given pattern. Show the path of the matched directories.
     ```
-    cuy --find-dir "foo.txt" --path /path/to/search
-    cuy --find-dir "foo.txt" --recursive
+    cuy --find-dir "foo" --path /path/to/search
+    cuy --find-dir "foo"
     ```
 

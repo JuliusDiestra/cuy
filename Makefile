@@ -7,6 +7,11 @@ VERSION := $(shell cat VERSION)
 CFLAGS = -O3 -Wall -DCUY_VERSION=\"$(VERSION)\"
 LDFLAGS =
 
+DOCKER_FILE = Dockerfile
+DOCKER_IMAGE = cuy-image
+DOCKER_CONTAINER = cuy-container
+
+
 SOURCES = main arg_parser status_code cli print_help print_version
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SOURCES)))
 
@@ -49,4 +54,11 @@ $(BIN_DIR):
 clean:
 	@echo "Cleaning $(BUILD_DIR) directory..."
 	@rm -rf $(BUILD_DIR)
+
+# Build docker image
+.PHONY: docker_image
+docker_image:
+	export USER_ID=$$(id -u) && \
+	export GROUP_ID=$$(id -g) && \
+	docker build . -t $(DOCKER_IMAGE) -f $(DOCKER_FILE) --build-arg USER_ID=$$USER_ID --build-arg GROUP_ID=$$GROUP_ID
 

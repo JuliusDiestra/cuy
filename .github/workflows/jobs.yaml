@@ -9,7 +9,13 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - name: Build Project
+      - name: Build Docker Image
         run: |
-          make clean
-          make all
+          ./docker.sh --build-image
+      - name: Clean project
+        run: |
+          ./docker.sh --clean
+      - name: Build project
+        run: |
+          ./docker.sh --build
+

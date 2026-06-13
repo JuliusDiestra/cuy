@@ -7,9 +7,10 @@ File operations:
 * PENDING - Show lines of file.
     ```
     cuy --file foo.c --lines 20     # Show line 20.
-    cuy --file foo.c --lines 20-30  # Show lines from 20 to 30.
-    cuy --file foo.c --lines 20-    # Show lines from 20 to end of file.
-    cuy --file foo.c --lines -20    # Show lines from beginning of file to 20.
+    cuy --file foo.c --lines 20,30  # Show line 20 and 30.
+    cuy --file foo.c --lines 20:30  # Show lines from 20 to 30.
+    cuy --file foo.c --lines 20:    # Show lines from 20 to end of file.
+    cuy --file foo.c --lines :20    # Show lines from beginning of file to 20.
     ```
 * PENDING - Match patterns of a given regex expression or string
 * PENDING - Remove specific lines of text in a file.
@@ -25,7 +26,7 @@ Directory operations:
     ```
 * PENDING - Recirsively search for directories matching a given pattern. Show the path of the matched directories.
     ```
-    cuy --find-dir "foo.txt" --path /path/to/search
-    cuy --find-dir "foo.txt" --recursive
+    cuy --find-dir "foo" --path /path/to/search
+    cuy --find-dir "foo"
     ```
 

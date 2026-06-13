@@ -6,6 +6,7 @@
 #include "cuy/arg_parser.h"
 #include "cuy/print_help.h"
 #include "cuy/print_version.h"
+#include "cuy/lines.h"
 
 StatusCode cli_run(int argc, char* argv[]) {
     CliFlag flags[kTotalCliFlags];
@@ -26,9 +27,11 @@ StatusCode cli_run(int argc, char* argv[]) {
         return CUY_SUCCESS;
     }
     if (flags[FLAG_INDEX_FILE].is_used && flags[FLAG_INDEX_LINES].is_used) {
-        // TBD : Add funciton to show lines of file.
-        printf("Run run_file_lines()\n");
-        return CUY_SUCCESS;
+        StatusCode run_lines_status = run_lines(flags[FLAG_INDEX_FILE].args[0], flags[FLAG_INDEX_LINES].args[0]);
+        if (!status_code_is_success(run_lines_status)) {
+            status_code_print_message(run_lines_status);
+        }
+        return run_lines_status;
     }
     return CUY_SUCCESS;
 }
